@@ -1,0 +1,848 @@
+html,
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	color: rgba(0, 0, 0, 0.65);
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+html *,
+body * {
+	outline: none;
+}
+/*
+*****弹出框的公用样式
+***** 标题栏 内容 背景 按钮
+*/
+/*弹框标题栏*/
+
+.win-header {
+	top: 0px;
+	height: 28px;
+	width: 100%;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(whitesmoke), to(#ddd));
+	cursor: default;
+	color: #666;
+}
+
+.win-header .win-title-bar {
+	margin-right: 75px;
+	padding-left: 10px;
+	height: 28px;
+	line-height: 28px;
+	font-size: 9pt;
+}
+
+.win-header .ctrls {
+	width: 75px;
+	height: 28px;
+	float: right;
+}
+
+.win-header .ctrls a {
+	display: block;
+	float: left;
+	height: 20px;
+	font-family: "Marlett";
+	font-size: 14px;
+	padding: 4px;
+	cursor: default;
+}
+
+.win-header .ctrls a[id]:hover {
+	color: black;
+}
+
+.win-header .ctrls a[id]:active {
+	color: black;
+}
+/*弹出框通用样式*/
+
+.win-pop-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: black;
+	opacity: 0.382;
+	z-index: 2;
+}
+
+.win-pop-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.win-btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 500;
+	text-align: center;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	line-height: 1.5;
+	padding: 2px 7px;
+	font-size: 12px;
+	border-radius: 2px;
+	-webkit-user-select: none;
+	user-select: none;
+	-webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+	position: relative;
+	background-color: #eee;
+	border-color: #e9e9e9;
+	color: #666666;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #c5c5c5;
+	border-radius: 10px;
+	border: whiteSmoke solid 3px;
+}
+
+::-webkit-scrollbar-track {
+	background: whiteSmoke;
+	-webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+}
+/*
+**工具栏样式
+*/
+
+.toolbar {
+	position: relative;
+	height: 22px;
+	border-bottom: 1px solid #e9e9e9;
+	background: #eee;
+}
+
+.toolbar span {
+	display: block;
+	float: left;
+	height: 22px;
+	padding: 0 7px;
+	line-height: 22px;
+	cursor: default;
+	font-size: 12px;
+}
+
+.toolbar span:hover {
+	background: whitesmoke;
+}
+/*组件列表样式*/
+
+.zui-components {
+	position: relative;
+	overflow: hidden;
+	width: 200px;
+	height: 100%;
+	background: whitesmoke;
+	user-select: none;
+	-webkit-user-select: none;
+	border-right: 1px solid #e9e9e9;
+	box-sizing: border-box;
+	/*列表分组名称样式*/
+	/*列表样式*/
+}
+
+.zui-components .zui-nav {
+	height: 29px;
+	line-height: 29px;
+	padding: 0 7px;
+	border-bottom: 1px solid #e9e9e9;
+}
+
+.zui-components .zui-nav:hover {
+	background-color: #eeeeee;
+}
+
+.zui-components .zui-ul {
+	border-bottom: 1px dashed #e9e9e9;
+	padding: 0 5px 0 0;
+	position: relative;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px 5px;
+	cursor: default;
+	transition: background-color 0.3s;
+	-webkit-transition: background-color 0.3s;
+}
+
+/*.zui-components .zui-ul:hover {
+	background-color: #eeeeee;
+}*/
+
+.zui-components .zui-ul .zui-li {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 30px;
+	list-style: none;
+	border-bottom: solid 1px #ddd;
+}
+/*中间容器样式*/
+
+.zui-container {
+	position: relative;
+	display: -webkit-box;
+}
+/*辅助操作高亮*/
+.zui-canvas{
+	
+}
+.zui-canvas [zui-eneter] {
+	transition: background-color 0.3s;
+	-webkit-transition: background-color 0.3s;
+}
+
+.zui-canvas [zui-eneter].zui-active {
+	background-color: rgba(0, 0, 255, 0.05) !important;
+}
+
+.zui-canvas [zui-eneter].zui-show-bottom {
+	border: 1px dashed blue!important;
+	padding-bottom: 50px!important;
+	min-width: 20px;
+}
+
+.zui-canvas .zui-cur {
+	border: 1px dashed red!important;
+	min-width: 20px;
+}
+
+.zui-canvas [zui-eneter].zui-cur {
+	border: 1px dashed red!important;
+	min-width: 20px;
+	padding-bottom: 50px!important;
+}
+/*右边属性区*/
+
+.zui-props {
+	overflow-y: hidden;
+	width: 200px;
+	height: 100%;
+	background: whitesmoke;
+	box-sizing: border-box;
+	position: relative;
+	border-left: 1px solid #e9e9e9;
+	padding-top: 29px;
+	overflow: auto;
+}
+
+.zui-props .zui-ul-nav {
+	/*题头*/
+	height: 29px;
+	line-height: 29px;
+	border-bottom: 1px solid #e9e9e9;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.zui-props .zui-ul-nav .zui-text {
+	/*属性*/
+	padding-left: 5px;
+	float: left;
+	width: 61.8%;
+	height: 29px;
+	overflow: hidden;
+	padding-right: 5px;
+	box-sizing: border-box;
+	border-right: 1px solid #e9e9e9;
+}
+
+.zui-props .zui-ul-nav .zui-value {
+	/*值*/
+	padding-left: 5px;
+	float: left;
+	box-sizing: border-box;
+	width: 38.2%;
+	height: 29px;
+}
+
+.zui-props .zui-ul {
+	/*说明*/
+}
+
+.zui-props .zui-ul .zui-nav {
+	/*分组题头*/
+	height: 29px;
+	line-height: 29px;
+	padding: 0 7px;
+	font-weight: bold;
+	border-bottom: 1px solid #e9e9e9;
+}
+
+.zui-props .zui-ul .zui-li {
+	padding: 0 5px;
+	height: 30px;
+	line-height: 30px;
+	position: relative;
+	cursor: default;
+	border-bottom: 1px solid #e9e9e9;
+	transition: background-color 0.3s;
+	-webkit-transition: background-color 0.3s;
+}
+
+.zui-props .zui-ul .zui-li:hover {
+	background-color: #eeeeee;
+}
+
+.zui-props .zui-ul .zui-li .zui-text {
+	/*属性名称*/
+	float: left;
+	width: 61.8%;
+	height: 30px;
+	padding-right: 5px;
+	box-sizing: border-box;
+	border-right: 1px solid #e9e9e9;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-repeat: no-repeat;
+}
+
+.zui-props .zui-ul .zui-li .zui-value {
+	/*属性值*/
+	float: left;
+	width: 38.2%;
+	height: 30px;
+}
+
+.zui-props .zui-ul .zui-li .zui-value input {
+	box-sizing: border-box;
+	width: 60px;
+	height: 20px;
+	margin-left: 5px;
+	line-height: 16px;
+}
+
+.zui-props .zui-ul .zui-li .zui-value input[color] {
+	width: 40px;
+}
+
+.zui-props .zui-ul .zui-li .zui-value span {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	top: 6px;
+	left: 3px;
+}
+
+.zui-props .zui-ul .zui-li .zui-value button {
+	box-sizing: border-box;
+	width: 60px;
+	height: 20px;
+	margin-left: 5px;
+	line-height: 16px;
+}
+
+.zui-props .zui-ul .zui-li .zui-value select {
+	box-sizing: border-box;
+	width: 60px;
+	height: 20px;
+	margin-left: 5px;
+	line-height: 16px;
+}
+
+.zui-props .zui-ul .zui-des {
+	padding: 10px 7px;
+	font-size: 12px;
+	/*题头*/
+	/*详情*/
+	/*盒子*/
+}
+
+.zui-props .zui-ul .zui-des .zui-des-text {
+	padding-top: 7px;
+	text-indent: 15px;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box {
+	box-sizing: border-box;
+	width: 189px;
+	height: 141px;
+	border: 1px dashed grey;
+	position: relative;
+	left: 5px;
+	background: lightgoldenrodyellow;
+	/*********margin**********/
+	/********border**********/
+	/*****padding*********/
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box::before {
+	content: "";
+	box-sizing: border-box;
+	display: block;
+	width: 131px;
+	height: 91px;
+	border: 1px dashed #666;
+	position: absolute;
+	left: 29px;
+	top: 25px;
+	background: whitesmoke;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box::after {
+	content: "";
+	box-sizing: border-box;
+	display: block;
+	width: 71px;
+	height: 41px;
+	border: 1px dashed grey;
+	position: absolute;
+	left: 59px;
+	top: 50px;
+	background: white;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-margin {
+	display: block;
+	font-size: 12px;
+	position: absolute;
+	top: -1px;
+	left: 2px;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-margin::before {
+	content: 'margin';
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-margin-top {
+	position: absolute;
+	top: -1px;
+	left: 50%;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-margin-bottom {
+	position: absolute;
+	bottom: -1px;
+	left: 50%;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-margin-left {
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-margin-right {
+	position: absolute;
+	top: 50%;
+	right: 5px;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-border {
+	display: block;
+	font-size: 12px;
+	position: absolute;
+	top: 10px;
+	right: 26px;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-border:before {
+	content: 'border';
+	color: blue;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-border-top {
+	position: absolute;
+	top: 17px;
+	left: 50%;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-border-bottom {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-border-left {
+	position: absolute;
+	top: 30%;
+	left: 25px;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-border-right {
+	position: absolute;
+	top: 30%;
+	right: 25px;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-padding {
+	display: block;
+	font-size: 12px;
+	position: absolute;
+	bottom: 30px;
+	left: 33px;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-padding::before {
+	content: 'padding';
+	color: orangered;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-padding-top {
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	color: orangered;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-padding-bottom {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	color: orangered;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-padding-left {
+	position: absolute;
+	top: 50%;
+	left: 33px;
+	color: orangered;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-padding-right {
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	color: orangered;
+}
+
+.zui-props .zui-ul .zui-des .zui-ul-box .box-content {
+	position: absolute;
+	top: 47%;
+	left: 35%;
+	z-index: 1;
+	color: #666;
+}
+/*盒子*/
+
+.zui-props .zui-ul-box {
+	box-sizing: border-box;
+	width: 189px;
+	height: 141px;
+	border: 1px dashed grey;
+	position: relative;
+	left: 5px;
+	background: lightgoldenrodyellow;
+}
+
+.zui-props .zui-ul-box::before {
+	content: "";
+	box-sizing: border-box;
+	display: block;
+	width: 131px;
+	height: 91px;
+	border: 1px dashed #666;
+	position: absolute;
+	left: 29px;
+	top: 25px;
+	background: whitesmoke;
+}
+
+.zui-props .zui-ul-box::after {
+	content: "";
+	box-sizing: border-box;
+	display: block;
+	width: 71px;
+	height: 41px;
+	border: 1px dashed grey;
+	position: absolute;
+	left: 59px;
+	top: 50px;
+	background: white;
+}
+
+.zui-props .zui-ul-box {
+	/*********margin**********/
+	/********border**********/
+	/*****padding*********/
+}
+
+.zui-props .zui-ul-box .box-margin {
+	display: block;
+	font-size: 12px;
+	position: absolute;
+	top: -1px;
+	left: 2px;
+}
+
+.zui-props .zui-ul-box .box-margin::before {
+	content: 'margin';
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul-box .box-margin-top {
+	position: absolute;
+	top: -1px;
+	left: 50%;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul-box .zui-ul-box .box-margin-bottom {
+	position: absolute;
+	bottom: -1px;
+	left: 50%;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul-box .box-margin-left {
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul-box .box-margin-right {
+	position: absolute;
+	top: 50%;
+	right: 5px;
+	color: saddlebrown;
+}
+
+.zui-props .zui-ul-box .box-border {
+	display: block;
+	font-size: 12px;
+	position: absolute;
+	top: 10px;
+	right: 26px;
+}
+
+.zui-props .zui-ul-box .box-border:before {
+	content: 'border';
+	color: blue;
+}
+
+.zui-props .zui-ul-box .box-border-top {
+	position: absolute;
+	top: 17px;
+	left: 50%;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul-box .box-border-bottom {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul-box .box-border-left {
+	position: absolute;
+	top: 30%;
+	left: 25px;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul-box .box-border-right {
+	position: absolute;
+	top: 30%;
+	right: 25px;
+	background: whitesmoke;
+	color: blue;
+}
+
+.zui-props .zui-ul-box .box-padding {
+	display: block;
+	font-size: 12px;
+	position: absolute;
+	bottom: 30px;
+	left: 33px;
+}
+
+.zui-props .zui-ul-box .box-padding::before {
+	content: 'padding';
+	color: orangered;
+}
+
+.zui-props .zui-ul-box .box-padding-top {
+	position: absolute;
+	top: 35px;
+	left: 50%;
+	color: orangered;
+}
+
+.zui-props .zui-ul-box .box-padding-bottom {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	color: orangered;
+}
+
+.zui-props .zui-ul-box .box-padding-left {
+	position: absolute;
+	top: 50%;
+	left: 33px;
+	color: orangered;
+}
+
+.zui-props .zui-ul-box .box-padding-right {
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	color: orangered;
+}
+
+.zui-props .zui-ul-box .box-content {
+	position: absolute;
+	top: 47%;
+	left: 35%;
+	z-index: 1;
+	color: #666;
+}
+/*左边组件列表拖拽的影子*/
+
+.zui-shadow {
+	position: fixed;
+	display: none;
+	opacity: 0.7;
+	padding: 0 5px 0 35px;
+	height: 30px;
+	line-height: 30px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px 5px;
+	cursor: default;
+	z-index: 2;
+}
+/*中间部分样式*/
+
+.zui-view {
+	position: relative;
+	-webkit-box-flex: 1;
+	height: 100%;
+	padding-top: 30px;
+	box-sizing: border-box;
+	user-select: none;
+	-webkit-user-select: none;
+	/*功能区*/
+	/*画布区*/
+	/*代码区*/
+}
+
+.zui-view .zui-nav {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 30px;
+	border-bottom: 1px solid #e9e9e9;
+	box-sizing: border-box;
+	padding-left: 7px;
+	background-color: white;
+	/*路径显示*/
+	/*前移后移按钮*/
+}
+
+.zui-view .zui-nav .zui-li {
+	/*设计 代码*/
+	box-sizing: border-box;
+	height: 21px;
+	border-radius: 4px;
+	border-width: 1px 1px 0 1px;
+	float: left;
+	margin-top: 10px;
+	text-align: center;
+	width: 50px;
+	border-color: white;
+	border-style: solid;
+	cursor: pointer;
+}
+
+.zui-view .zui-nav .zui-li:hover {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+.zui-view .zui-nav .zui-li.active {
+	color: rgba(0, 0, 0, 0.65) !important;
+	border-color: #e9e9e9;
+	background: white;
+	cursor: default!important;
+}
+
+.zui-view .zui-nav .zui-model {
+	float: left;
+	margin-top: 10px;
+	height: 21px;
+	color: orange;
+	margin-left: 15px;
+	font-weight: bold;
+}
+
+.zui-view .zui-nav .zui-move {
+	width: 18px;
+	height: 18px;
+	display: block;
+	float: right;
+	position: relative;
+	margin-top: 7px;
+	cursor: pointer;
+	margin-left: 5px;
+	margin-right: 5px;
+	/*后移按钮*/
+	/*前移按钮*/
+}
+
+.zui-view .zui-nav .zui-move{
+	width: 200px;
+	border: solid 1px #000000;
+}
+
+.zui-view .zui-canvas {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	position: relative;
+	z-index: 1;
+}
+.zui-view .zui-canvas.active {
+	border: 3px dotted #228822;
+}
+
+.zui-view .zui-code {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	display: none;
+}

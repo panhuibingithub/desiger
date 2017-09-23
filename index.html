@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>设计器</title>
+		<meta charset="utf-8" />
+		
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<!--<div class="toolbar">
+			<span new="">新建</span>
+			<span cancel="">撤销</span>
+		</div>-->
+		<div class="zui-container">
+			<div class="zui-components">
+				<div class="zui-nav">流程设计</div>
+				<div class="zui-ul">
+					<li class="zui-li" v-for="(item,index) in units" :id="'item'+index" draggable="true" @dragstart="dragElement(item)">
+						{{item.name}}
+					</li>
+				</div>
+			</div>
+			<div class="zui-view">
+				<div class="zui-nav">
+					<div class="zui-li active" zui-nav-design="">设计</div>
+					<div class="zui-li" zui-nav-code="">代码</div>
+					<div class="zui-move" id="remove" title="删除">删除</div>
+				</div>
+				<div :class="['zui-canvas',dropOver?'active':'']" @dragleave="dropLeaveContainer($event)" @dragover="dropOverContainer($event)" @drop="dropElement($event)" @dragenter="dragEnterContainer($event)" id="stage">
+				</div>
+				<div class="zui-code" >
+					
+				</div>
+			</div>
+			<div class="zui-props">
+				<div class="zui-ul-nav">
+					<div class="zui-text">属性</div>
+					<div class="zui-value">取值</div>
+				</div>
+				<div class="zui-ul"></div>
+			</div>
+		</div>
+		<div id="zui-shandow" class="zui-shadow">
+		</div>
+		<script src="js/zepto.min.js"></script>
+		<script src="js/vue.min.2.4.2.js"></script>
+		<script src="js/d3.js"></script>
+		<!--<script src="js/drag.js"></script>-->
+		<script src="js/index.js"></script>
+	</body>
+</html>
